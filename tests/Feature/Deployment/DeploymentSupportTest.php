@@ -23,7 +23,8 @@ class DeploymentSupportTest extends TestCase
         $override = file_get_contents(base_path('docker-compose.override.yml'));
 
         $this->assertNotFalse($override);
-        $this->assertStringContainsString('mongo-client', $override);
+        $this->assertStringContainsString('mongo-web-client', $override);
         $this->assertStringContainsString('local-dev', $override);
+        $this->assertStringContainsString('8081:8081', $override);
     }
 }
