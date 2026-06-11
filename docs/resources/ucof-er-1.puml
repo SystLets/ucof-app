@@ -1,0 +1,94 @@
+@startuml
+skinparam linetype ortho
+
+package "Norm_Definition" {
+  entity "Standard" { 
+    *id : uuid
+    name : text
+  }
+  entity "Requirement" { 
+    *id : uuid
+    description : text
+  }
+}
+
+package "Implementation_Data" {
+  entity "Control" { 
+    *id : uuid
+    name : text
+  }
+  entity "Task" { 
+    *id : uuid
+    status : text
+  }
+  entity "Evidence" { 
+    *id : uuid
+    data : blob
+  }
+  entity "Artifact" { 
+    *id : uuid
+    path : text
+  }
+  entity "Mapping" { 
+    *id : uuid
+  }
+  entity "Risk" { 
+    *id : uuid
+    level : text
+  }
+  entity "Risk_Treatment" { 
+    *id : uuid
+  }
+  entity "Exception_Request" { 
+    *id : uuid
+    reason : text
+  }
+}
+
+package "Audit_Data" {
+  entity "Audit" { 
+    *id : uuid
+    date : date
+  }
+  entity "Finding" { 
+    *id : uuid
+    severity : text
+  }
+  entity "Audit_Rationale" { 
+    *id : uuid
+    note : text
+  }
+  entity "Remediation_Action" { 
+    *id : uuid
+    due_date : date
+  }
+}
+
+package "Executive_Data" {
+  entity "Decision" { 
+    *id : uuid
+    outcome : text
+  }
+  entity "Decision_Rationale" { 
+    *id : uuid
+    justification : text
+  }
+}
+
+Standard ||--o{ Requirement
+Requirement ||--o{ Mapping
+Control ||--o{ Mapping
+Control ||--o{ Task
+Control ||--o{ Evidence
+Evidence ||--|| Artifact
+Audit ||--o{ Finding
+Finding ||--|| Control
+Finding ||--|| Audit_Rationale
+Finding ||--o{ Remediation_Action
+Remediation_Action ||--|| Control
+Control ||--o{ Risk_Treatment
+Risk ||--o{ Risk_Treatment
+Exception_Request ||--|| Control
+Exception_Request ||--|| Decision
+Decision ||--|| Decision_Rationale
+@enduml

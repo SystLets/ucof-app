@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor "Executive" as E
+
+rectangle "ucof-app (Executive)" {
+  usecase "[E-UC1] View Overall Compliance Posture" as EUC1
+  usecase "[E-UC2] View Posture by Entity" as EUC2
+  usecase "[E-UC3] View Posture by Framework" as EUC3
+  usecase "[E-UC4] Monitor Risk Exposure" as EUC4
+  usecase "[E-UC5] Set Risk Tolerance and Scoring Thresholds" as EUC5
+  usecase "[E-UC6] Monitor Control Coverage" as EUC6
+  usecase "[E-UC7] Review Audit Outcomes" as EUC7
+  usecase "[E-UC8] Review Open Findings" as EUC8
+  usecase "[E-UC9] Track Strategic Compliance Initiatives" as EUC9
+  usecase "[E-UC11] Review Exceptions and Decisions" as EUC11
+  usecase "[E-UC12] Approve Exceptions" as EUC12
+  usecase "[E-UC13] Reject Exceptions" as EUC13
+  usecase "[E-UC14] Prioritize Remediation Investment" as EUC14
+  usecase "[E-UC15] Evaluate Certification Readiness" as EUC15
+  usecase "[E-UC16] Compare Business Units" as EUC16
+  usecase "[E-UC17] Compare Products" as EUC17
+  usecase "[E-UC18] Review Trend Lines" as EUC18
+  usecase "[E-UC19] Monitor Accountability" as EUC19
+  usecase "[E-UC21] Align Compliance with Business Priorities" as EUC21
+  usecase "[E-UC22] Review Governance Performance" as EUC22
+
+  EUC1 ..> EUC2 : <<include>>
+  EUC1 ..> EUC3 : <<include>>
+  EUC4 ..> EUC5 : <<include>>
+  EUC7 ..> EUC8 : <<include>>
+  EUC11 ..> EUC12 : <<include>>
+  EUC11 ..> EUC13 : <<include>>
+  EUC16 ..> EUC17 : <<include>>
+  EUC21 ..> EUC22 : <<include>>
+}
+
+E --> EUC1
+E --> EUC4
+E --> EUC6
+E --> EUC7
+E --> EUC9
+E --> EUC11
+E --> EUC14
+E --> EUC15
+E --> EUC16
+E --> EUC18
+E --> EUC19
+E --> EUC21
+@enduml

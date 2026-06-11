@@ -1,0 +1,54 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor "Auditor" as A
+
+rectangle "ucof-app (Auditor)" {
+  usecase "[A-UC1] Define Audit Scope" as AUC1
+  usecase "[A-UC2] Build Audit Plan" as AUC2
+  usecase "[A-UC3] Review Requirement-to-Control Mapping" as AUC3
+  usecase "[A-UC4] Examine Evidence Chains" as AUC4
+  usecase "[A-UC5] Validate Evidence Quality" as AUC5
+  usecase "[A-UC6] Request Additional Evidence" as AUC6
+  usecase "[A-UC7] Test Control Design" as AUC7
+  usecase "[A-UC8] Test Control Operation" as AUC8
+  usecase "[A-UC9] Identify Findings" as AUC9
+  usecase "[A-UC10] Register Nonconformities" as AUC10
+  usecase "[A-UC11] Classify Finding Severity" as AUC11
+  usecase "[A-UC12] Review Remediation Actions" as AUC12
+  usecase "[A-UC13] Verify Remediation Effectiveness" as AUC13
+  usecase "[A-UC14] Track Issue Closure" as AUC14
+  usecase "[A-UC15] Reopen Unresolved Issues" as AUC15
+  usecase "[A-UC16] Compare Posture Over Time" as AUC16
+  usecase "[A-UC17] Audit by Framework" as AUC17
+  usecase "[A-UC18] Audit Across Frameworks" as AUC18
+  usecase "[A-UC19] Audit Risk Governance" as AUC19
+  usecase "[A-UC20] Produce Audit Outputs" as AUC20
+  usecase "[A-UC21] Prepare Audit Summary" as AUC21
+  usecase "[A-UC22] Record Audit Rationale" as AUC22
+
+  AUC1 ..> AUC2 : <<include>>
+  AUC4 ..> AUC5 : <<include>>
+  AUC5 ..> AUC6 : <<include>>
+  AUC9 ..> AUC10 : <<include>>
+  AUC9 ..> AUC11 : <<include>>
+  AUC9 ..> AUC22 : <<include>>
+  AUC12 ..> AUC13 : <<include>>
+  AUC14 ..> AUC15 : <<include>>
+  AUC20 ..> AUC21 : <<include>>
+}
+
+A --> AUC1
+A --> AUC3
+A --> AUC4
+A --> AUC7
+A --> AUC8
+A --> AUC9
+A --> AUC12
+A --> AUC14
+A --> AUC16
+A --> AUC17
+A --> AUC18
+A --> AUC19
+A --> AUC20
+@enduml

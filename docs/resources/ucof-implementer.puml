@@ -1,0 +1,52 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor "Implementer" as I
+
+rectangle "ucof-app (Implementer)" {
+  usecase "[I-UC1] Understand Assigned Obligations" as IUC1
+  usecase "[I-UC2] Review Assigned Controls" as IUC2
+  usecase "[I-UC3] Plan Implementation Work" as IUC3
+  usecase "[I-UC4] Execute Control Implementation" as IUC4
+  usecase "[I-UC5] Update Control Status" as IUC5
+  usecase "[I-UC6] Produce Evidence" as IUC6
+  usecase "[I-UC7] Attach Evidence to Control" as IUC7
+  usecase "[I-UC8] Maintain Evidence Freshness" as IUC8
+  usecase "[I-UC9] Respond to Evidence Requests" as IUC9
+  usecase "[I-UC10] Perform Self-Assessment" as IUC10
+  usecase "[I-UC11] Manage Remediation Actions" as IUC11
+  usecase "[I-UC12] Update Risk Treatments" as IUC12
+  usecase "[I-UC13] Reassess Residual Risk" as IUC13
+  usecase "[I-UC14] Handle Change Impact" as IUC14
+  usecase "[I-UC15] Review Affected Controls" as IUC15
+  usecase "[I-UC16] Prepare for Audits and Reviews" as IUC16
+  usecase "[I-UC17] Check Readiness Gaps" as IUC17
+  usecase "[I-UC18] Reuse Controls Across Standards" as IUC18
+  usecase "[I-UC19] Reuse Evidence Across Standards" as IUC19
+  usecase "[I-UC20] Collaborate on Control Ownership" as IUC20
+  usecase "[I-UC21] Escalate Blockers" as IUC21
+
+  IUC4 ..> IUC5 : <<include>>
+  IUC6 ..> IUC7 : <<include>>
+  IUC12 ..> IUC13 : <<include>>
+  IUC14 ..> IUC15 : <<include>>
+  IUC16 ..> IUC17 : <<include>>
+  IUC18 ..> IUC19 : <<include>>
+}
+
+I --> IUC1
+I --> IUC2
+I --> IUC3
+I --> IUC4
+I --> IUC6
+I --> IUC8
+I --> IUC9
+I --> IUC10
+I --> IUC11
+I --> IUC12
+I --> IUC14
+I --> IUC16
+I --> IUC18
+I --> IUC20
+I --> IUC21
+@enduml

@@ -1,0 +1,158 @@
+@startuml
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+package "Norm_Definition" {
+  entity "Standard" as Standard {
+    * id : UUID <<PK>>
+    --
+    name : String
+    version : String
+    authority : String
+  }
+
+  entity "Requirement" as Requirement {
+    * id : UUID <<PK>>
+    --
+    standard_id : UUID <<FK>>
+    code : String
+    title : String
+    description : Text
+  }
+}
+
+package "Implementation_Data" {
+  entity "Mapping" as Mapping {
+    * id : UUID <<PK>>
+    --
+    requirement_id : UUID <<FK>>
+    control_id : UUID <<FK>>
+    rationale : Text
+  }
+
+  entity "Control" as Control {
+    * id : UUID <<PK>>
+    --
+    name : String
+    description : Text
+    owner : String
+    status : Enum
+  }
+
+  entity "Task" as Task {
+    * id : UUID <<PK>>
+    --
+    control_id : UUID <<FK>>
+    title : String
+    assignee : String
+    due_date : Date
+  }
+
+  entity "Evidence" as Evidence {
+    * id : UUID <<PK>>
+    --
+    control_id : UUID <<FK>>
+    collection_date : DateTime
+    valid_until : DateTime
+  }
+
+  entity "Artifact" as Artifact {
+    * id : UUID <<PK>>
+    --
+    evidence_id : UUID <<FK>>
+    file_name : String
+    file_url : String
+  }
+
+  entity "Risk" as Risk {
+    * id : UUID <<PK>>
+    --
+    title : String
+    inherent_score : Integer
+  }
+
+  entity "Risk_Treatment" as Risk_Treatment {
+    * id : UUID <<PK>>
+    --
+    risk_id : UUID <<FK>>
+    control_id : UUID <<FK>>
+  }
+
+  entity "Exception_Request" as Exception_Request {
+    * id : UUID <<PK>>
+    --
+    control_id : UUID <<FK>>
+    justification : Text
+    expiry_date : Date
+  }
+}
+
+package "Audit_Data" {
+  entity "Audit" as Audit {
+    * id : UUID <<PK>>
+    --
+    title : String
+    auditor : String
+    date : Date
+  }
+
+  entity "Finding" as Finding {
+    * id : UUID <<PK>>
+    --
+    audit_id : UUID <<FK>>
+    control_id : UUID <<FK>>
+    severity : Enum
+    status : Enum
+  }
+
+  entity "Audit_Rationale" as Audit_Rationale {
+    * id : UUID <<PK>>
+    --
+    finding_id : UUID <<FK>>
+    logic : Text
+  }
+
+  entity "Remediation_Action" as Remediation_Action {
+    * id : UUID <<PK>>
+    --
+    finding_id : UUID <<FK>>
+    control_id : UUID <<FK>>
+    deadline : Date
+  }
+}
+
+package "Executive_Data" {
+  entity "Decision" as Decision {
+    * id : UUID <<PK>>
+    --
+    exception_id : UUID <<FK>>
+    approver : String
+    status : Enum
+  }
+
+  entity "Decision_Rationale" as Decision_Rationale {
+    * id : UUID <<PK>>
+    --
+    decision_id : UUID <<FK>>
+    comments : Text
+  }
+}
+
+' Cross-Package Relationships
+Standard ||--o{ Requirement
+Requirement ||--o{ Mapping
+Control ||--o{ Mapping
+Control ||--o{ Task
+Control ||--o{ Evidence
+Evidence ||--|| Artifact
+Audit ||--o{ Finding
+Finding ||--|| Control
+Finding ||--|| Audit_Rationale
+Finding ||--o{ Remediation_Action
+Remediation_Action ||--|| Control
+Control ||--o{ Risk_Treatment
+Risk ||--o{ Risk_Treatment
+Exception_Request ||--|| Control
+Exception_Request ||--|| Decision
+Decision ||--|| Decision_Rationale
+@enduml
