@@ -1,0 +1,15 @@
+services:
+  mongo-web-client:
+    image: mongo-express:1.0.2
+    container_name: ucof-mongo-web-client
+    profiles: ["local-dev"]
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      ME_CONFIG_MONGODB_URL: ${MONGODB_URI:-mongodb://root:root@mongodb:27017/ucof?authSource=admin}
+      ME_CONFIG_BASICAUTH: "false"
+    ports:
+      - "8081:8081"
+    networks:
+      - ucof

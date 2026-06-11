@@ -1,0 +1,3 @@
+services:
+  mongo-web-client:
+    profiles: ["local-dev"]
