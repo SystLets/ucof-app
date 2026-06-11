@@ -1,0 +1,14 @@
+services:
+  mongo-client:
+    build:
+      context: .
+      dockerfile: docker/mongo-client/Dockerfile
+    profiles: ["local-dev"]
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      MONGODB_URI: ${MONGODB_URI:-mongodb://root:root@mongodb:27017/ucof?authSource=admin}
+    command: ["bash", "-lc", "sleep infinity"]
+    networks:
+      - ucof
