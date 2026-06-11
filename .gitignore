@@ -1,2 +1,5 @@
 references/
 .vscode/
+
+.DS_Store
+*.log
