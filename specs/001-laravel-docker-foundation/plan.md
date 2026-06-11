@@ -5,18 +5,18 @@
 
 ## Summary
 
-Build the initial Docker-native Laravel webapp foundation with nginx, MongoDB, Blade + Livewire, healthchecks, PHPUnit, and environment-specific deployment support for local-dev, staging, and production. The result is a monolithic web application foundation that is fully runnable in containers, includes a local MongoDB client path for inspection, and is ready for future feature work.
+Build the initial Docker-native Laravel webapp foundation with nginx, MongoDB, Blade + Livewire, healthchecks, PHPUnit, and environment-specific deployment support for local-dev, staging, and production. The result is a monolithic web application foundation that is fully runnable in containers, includes a local MongoDB web client path for inspection, and is ready for future feature work.
 
 ## Technical Context
 
-**Language/Version**: PHP 8.3 with Laravel 11.x
+**Language/Version**: PHP 8.3 with Laravel 12.x
 **Primary Dependencies**: Laravel framework, Blade, Livewire 3, mongodb/laravel-mongodb, nginx, Docker Compose, PHPUnit, Vite asset pipeline
 **Storage**: MongoDB
 **Testing**: PHPUnit for unit and feature tests; container-level smoke checks for health and startup
 **Target Platform**: Docker containers on macOS development machines and Linux-based staging/production environments
 **Project Type**: Web application (monolithic frontend on a single Laravel app)
 **Performance Goals**: Local stack ready from a clean checkout in under 5 minutes; healthchecks available on every required service
-**Constraints**: Docker-only runtime entrypoint, no host PHP/Node requirement for running the stack, local-dev MongoDB client access must be available via override/profile, deployment assets must be separated by environment
+**Constraints**: Docker-only runtime entrypoint, no host PHP/Node requirement for running the stack, local-dev MongoDB web client access must be available via override/profile and exposed host port, deployment assets must be separated by environment
 **Scale/Scope**: Single application foundation with infrastructure, scaffolding, and environment preparation only; no business workflows in this epic
 
 ## Constitution Check
@@ -70,8 +70,7 @@ tests/
 docker/
 ├── nginx/
 ├── php/
-├── mongodb/
-└── mongo-client/
+└── mongodb/
 
 deploy/
 ├── specs/

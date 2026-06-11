@@ -2,9 +2,9 @@
 
 ## Decisions
 
-### 1. Use PHP 8.3 and Laravel 11.x
+### 1. Use PHP 8.3 and Laravel 12.x
 
-- **Decision**: Standardize the webapp foundation on PHP 8.3 and Laravel 11.x.
+- **Decision**: Standardize the webapp foundation on PHP 8.3 and Laravel 12.x.
 - **Rationale**: This is a stable, modern baseline with broad ecosystem compatibility for Livewire and the MongoDB Laravel integration package.
 - **Alternatives considered**:
   - Laravel 12.x: likely viable, but adds upgrade risk without meaningful benefit for a foundation epic.
@@ -43,11 +43,11 @@
 
 ### 6. Provide local-dev MongoDB access through a profile or override
 
-- **Decision**: Implement a local-dev profile or `docker-compose.override.yml` that adds a MongoDB client container for inspection.
-- **Rationale**: This satisfies the environment-specific inspection requirement without affecting staging or production stacks.
+- **Decision**: Implement a local-dev profile or `docker-compose.override.yml` that adds a MongoDB web client service (`mongo-express`) exposed by host port.
+- **Rationale**: This satisfies the environment-specific inspection requirement through a browser-accessible UI without affecting staging or production stacks.
 - **Alternatives considered**:
   - Host-installed MongoDB tools: rejected because the constitution prefers container-first workflows.
-  - Always-on client container: rejected because it would leak dev-only tooling into staging/production.
+  - Always-on web client in all environments: rejected because it would leak dev-only tooling into staging/production.
 
 ### 7. Separate deployment support by environment
 

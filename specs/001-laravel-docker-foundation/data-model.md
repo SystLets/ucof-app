@@ -35,7 +35,7 @@ This epic defines the operational foundation for the system. The data model is l
   - Can depend on other services.
 - **Validation Rules**:
   - Required services for the foundation are `webapp`, `nginx`, and `mongodb`.
-  - The local-dev environment must include a MongoDB client service or equivalent override/profile entry.
+  - The local-dev environment must include a MongoDB web client service (or equivalent override/profile entry) exposed by host port.
 
 ### DeploymentAsset
 
@@ -69,7 +69,7 @@ This epic defines the operational foundation for the system. The data model is l
 
 ## Environment Relationships
 
-- `local-dev` includes `webapp`, `nginx`, `mongodb`, and a MongoDB client service or equivalent override/profile.
+- `local-dev` includes `webapp`, `nginx`, `mongodb`, and a MongoDB web client service or equivalent override/profile.
 - `staging` includes `webapp`, `nginx`, and `mongodb` but excludes dev-only tooling.
 - `production` includes `webapp`, `nginx`, and `mongodb` with the same public contract as staging, minus dev-only tooling.
 
@@ -78,4 +78,4 @@ This epic defines the operational foundation for the system. The data model is l
 - The webapp must be reachable through nginx rather than directly exposing PHP-FPM.
 - Healthchecks must be observable from container tooling.
 - Deployment assets must preserve consistent service naming across environments.
-- The local-dev MongoDB client must be optional outside development.
+- The local-dev MongoDB web client must be optional outside development.

@@ -79,9 +79,9 @@ description: "Task list for the Laravel Docker Foundation feature"
 
 ## Phase 5: User Story 3 - Environment-Specific Deployment Setup (Priority: P2)
 
-**Goal**: Prepare separated deployment support for local-dev, staging, and production, including a local MongoDB client path for inspection.
+**Goal**: Prepare separated deployment support for local-dev, staging, and production, including a local MongoDB web client path for inspection.
 
-**Independent Test**: Inspect the repository and run the local-dev variant to confirm the environment-specific support files exist and the MongoDB client is available.
+**Independent Test**: Inspect the repository and run the local-dev variant to confirm the environment-specific support files exist and the MongoDB web client is available.
 
 ### Tests for User Story 3
 
@@ -92,7 +92,7 @@ description: "Task list for the Laravel Docker Foundation feature"
 - [X] T022 [P] [US3] Create local-dev deployment specs and scripts in `deploy/specs/local-dev/` and `deploy/scripts/local-dev/` so the dev environment is explicitly documented and runnable for FR-008, FR-009, and FR-010.
 - [X] T023 [P] [US3] Create staging deployment specs and scripts in `deploy/specs/staging/` and `deploy/scripts/staging/` so staging is separately prepared for FR-008 and FR-009.
 - [X] T024 [P] [US3] Create production deployment specs and scripts in `deploy/specs/production/` and `deploy/scripts/production/` so production is separately prepared for FR-008 and FR-009.
-- [X] T025 [US3] Add the local-dev MongoDB client profile or `docker-compose.override.yml` entry in `docker-compose.override.yml` or `docker-compose.local-dev.yml` plus `docker/mongo-client/Dockerfile` to satisfy FR-010 and SC-003.
+- [X] T025 [US3] Add the local-dev MongoDB web client profile or `docker-compose.override.yml` entry in `docker-compose.override.yml` or `docker-compose.local-dev.yml` (with exposed host port) to satisfy FR-010 and SC-003.
 - [X] T026 [US3] Document the environment startup and MongoDB inspection flow in `specs/001-laravel-docker-foundation/quickstart.md` so local-dev, staging, and production usage is clear for FR-008 through FR-010.
 
 **Checkpoint**: Environment-specific deployment support exists and local-dev includes MongoDB inspection access.

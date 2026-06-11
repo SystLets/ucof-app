@@ -13,7 +13,7 @@
 docker compose up --build
 ```
 
-2. Start the local-dev variant with MongoDB client access:
+2. Start the local-dev variant with MongoDB web client access:
 
 ```bash
 docker compose --profile local-dev up --build
@@ -43,12 +43,12 @@ docker compose exec app vendor/bin/phpunit
 
 ## Inspect MongoDB in local-dev
 
-Use the MongoDB client container or override/profile-based tooling included in the local-dev setup.
+Use the MongoDB web client included in the local-dev setup.
 
-Example:
+Open:
 
-```bash
-docker compose --profile local-dev exec mongo-client mongosh
+```text
+http://localhost:8081
 ```
 
 ## Environment Support

@@ -22,10 +22,10 @@ This contract defines the runtime interface for the Laravel Docker foundation.
 - Internal-only network access for the application stack
 - Must be reachable from the webapp and inspection tooling
 
-### mongo-client
+### mongo-web-client
 
-- Dev-only client service enabled via the local-dev profile or override
-- Used to inspect MongoDB without host-installed tooling
+- Dev-only web client service enabled via the local-dev profile or override
+- Exposes a browser-accessible MongoDB UI in local development
 
 ## Healthcheck Contract
 
@@ -35,7 +35,7 @@ This contract defines the runtime interface for the Laravel Docker foundation.
 
 ## Deployment Contract
 
-- `local-dev` includes the MongoDB client service.
-- `staging` and `production` exclude dev-only client tooling.
+- `local-dev` includes the MongoDB web client service.
+- `staging` and `production` exclude dev-only web-client tooling.
 - Deployment scripts and specs must be stored separately by environment.
 - Service names should remain stable across environments to avoid configuration drift.

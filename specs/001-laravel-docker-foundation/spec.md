@@ -40,12 +40,12 @@ As a developer, I can use separate deployment preparation assets for local-dev, 
 
 **Why this priority**: The project needs a clear path from local development to deployable environments without rework.
 
-**Independent Test**: Review the deployment support files and run the local-dev variant to confirm it includes the database client needed for MongoDB access.
+**Independent Test**: Review the deployment support files and run the local-dev variant to confirm it includes the MongoDB web client needed for database inspection.
 
 **Acceptance Scenarios**:
 
 1. **Given** the repository is checked out, **When** a developer inspects the deployment support structure, **Then** separate assets for local-dev, staging, and production are present.
-2. **Given** the local-dev environment is started, **When** the developer needs to inspect the database, **Then** a MongoDB client is available in that environment.
+2. **Given** the local-dev environment is started, **When** the developer needs to inspect the database, **Then** a MongoDB web client is available in that environment via an exposed host port.
 
 ---
 
@@ -66,7 +66,7 @@ As a team member, I can verify the system has runtime health checks and stable s
 ## Edge Cases
 
 - What happens if MongoDB is unavailable when the stack starts?
-- How does the environment behave if the local-dev profile is enabled but the database client container fails?
+- How does the environment behave if the local-dev profile is enabled but the MongoDB web client fails?
 - What happens if a deployment script is present but targets an environment with missing configuration?
 - How should the stack behave if a healthcheck passes for one component but the webapp cannot reach the database?
 
@@ -83,14 +83,14 @@ As a team member, I can verify the system has runtime health checks and stable s
 - **FR-007**: The system MUST expose healthchecks for the running services so availability can be validated automatically.
 - **FR-008**: The system MUST provide a separated folder structure for deployment support assets and scripts.
 - **FR-009**: The deployment support assets MUST cover at least local-dev, staging, and production environments.
-- **FR-010**: The local-dev environment MUST include a way to access MongoDB using a client container or an override/profile-based equivalent.
+- **FR-010**: The local-dev environment MUST include a way to access MongoDB using a web client service exposed by host port (or an override/profile-based equivalent).
 - **FR-011**: The foundation MUST be in a working state at epic completion, meaning the required services start and communicate successfully.
 - **FR-012**: The system MUST support a first version of the webapp foundation suitable for future feature implementation.
 
 ### Key Entities *(include if feature involves data)*
 
 - **Deployment Environment**: A named runtime context such as local-dev, staging, or production.
-- **Service**: A runtime component such as the webapp, reverse proxy, database, or database client.
+- **Service**: A runtime component such as the webapp, reverse proxy, database, or MongoDB web client.
 - **Deployment Asset**: A script, profile, or support file used to start or manage an environment.
 - **Healthcheck**: A runtime verification signal used to confirm service readiness and availability.
 
