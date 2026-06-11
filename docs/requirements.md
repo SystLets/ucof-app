@@ -198,22 +198,5 @@ The Executive journey moves from **Setting Strategy** to **Monitoring Progress**
 12. **Readiness Evaluation (Inside - E-UC15):** Make the final "Go/No-Go" decision for formal certification or board reporting based on the verified readiness data.
 13. **Governance Performance Review and Business Alignment (Inside - E-UC21/E-UC22):** Conduct a final review of governance performance and confirm alignment with business priorities.
 
----
-
-# Coherence Validation Notes (2026-06-10, Re-run After Edits)
-
-## Validation Scope
-
-Checked alignment between:
-- Functional Requirements (Implementer, Auditor, Executive)
-- Role-scoped use case identifiers (I-UCx, A-UCx, E-UCx)
-- Role flows and phase steps
-
-## Summary
-
-- Role ambiguity is resolved by adopting Model B (role-scoped IDs).
-- Implementer, Auditor, and Executive flows now align with their own role-specific requirement sets.
-- Auditor duplication risk is reduced by making the flow procedural and keeping Functional Requirements as the normative source.
-
 
 
