@@ -109,6 +109,23 @@ Included today:
 - health endpoints and service-level health checks
 - deployment support structure for `local-dev`, `staging`, and `production`
 
+Authentication and profile pages delivered in feature 003:
+
+- `GET /login` and `POST /login`
+- `POST /logout`
+- `GET /password/reset`, `POST /password/reset/request`
+- `GET /password/reset/{token}`, `POST /password/reset/complete`
+- `GET /dashboard` (authenticated landing page)
+- `GET /profile`, `POST /profile/password`
+
+User provisioning script for login bootstrap (feature 004):
+
+- shared command: `docker compose exec app php artisan ucof:provision-user --name="<name>" --email="<email>" --password="<password>"`
+- local-dev wrapper: `sh deploy/scripts/local-dev/add-user.sh "<name>" "<email>" "<password>"`
+- staging wrapper: `sh deploy/scripts/staging/add-user.sh "<name>" "<email>" "<password>"`
+- production wrapper: `sh deploy/scripts/production/add-user.sh "<name>" "<email>" "<password>"`
+- duplicate active/locked accounts are rejected; inactive/disabled accounts are reactivated with updated password
+
 Not implemented yet:
 
 - production business workflows for obligations, controls, evidence, audits, risks, and executive dashboards
@@ -264,6 +281,13 @@ This starts:
 The application is then available at:
 
 - `http://localhost`
+
+Auth flow quick checks:
+
+- open `http://localhost/login` for sign-in
+- use `http://localhost/password/reset` for reset request flow
+- after sign-in, landing page is `http://localhost/dashboard`
+- open `http://localhost/profile` to view name/email and change password
 
 ### Start Local Development With MongoDB Web Client
 

@@ -1,6 +1,6 @@
 FROM php:8.3-fpm-alpine
 
-RUN apk add --no-cache bash git curl icu-dev libzip-dev oniguruma-dev libxml2-dev $PHPIZE_DEPS \
+RUN apk add --no-cache bash git curl icu-dev libzip-dev oniguruma-dev libxml2-dev openssl-dev cyrus-sasl-dev $PHPIZE_DEPS \
     && pecl install mongodb \
     && docker-php-ext-enable mongodb \
     && docker-php-ext-install pdo pdo_mysql intl zip opcache \
