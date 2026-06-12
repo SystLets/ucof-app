@@ -14,6 +14,13 @@ They cover:
 - implementation planning and sequencing
 - supporting diagrams and visual references
 
+In addition to conceptual docs, the repository now includes concrete auth/account UX flows:
+
+- login and logout routes
+- password reset request and completion pages
+- authenticated landing page (`/dashboard`)
+- profile page with password change (`/profile`)
+
 ## Documentation Map
 
 ### Core Documents
