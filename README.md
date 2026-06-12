@@ -118,6 +118,14 @@ Authentication and profile pages delivered in feature 003:
 - `GET /dashboard` (authenticated landing page)
 - `GET /profile`, `POST /profile/password`
 
+User provisioning script for login bootstrap (feature 004):
+
+- shared command: `docker compose exec app php artisan ucof:provision-user --name="<name>" --email="<email>" --password="<password>"`
+- local-dev wrapper: `sh deploy/scripts/local-dev/add-user.sh "<name>" "<email>" "<password>"`
+- staging wrapper: `sh deploy/scripts/staging/add-user.sh "<name>" "<email>" "<password>"`
+- production wrapper: `sh deploy/scripts/production/add-user.sh "<name>" "<email>" "<password>"`
+- duplicate active/locked accounts are rejected; inactive/disabled accounts are reactivated with updated password
+
 Not implemented yet:
 
 - production business workflows for obligations, controls, evidence, audits, risks, and executive dashboards

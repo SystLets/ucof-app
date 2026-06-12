@@ -19,6 +19,8 @@ class User extends Authenticatable
         'status',
         'failed_signin_attempts',
         'last_signin_at',
+        'provisioned_at',
+        'provisioned_from',
     ];
 
     protected $hidden = [
@@ -31,6 +33,7 @@ class User extends Authenticatable
         return [
             'last_signin_at' => 'datetime',
             'failed_signin_attempts' => 'integer',
+            'provisioned_at' => 'datetime',
         ];
     }
 }
